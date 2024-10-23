@@ -52,4 +52,22 @@ public class MyTestCases {
 		boolean ExpectedResult = true;
 		org.testng.Assert.assertEquals(ActualResult, ExpectedResult);
 	}
+	
+	@Test(priority = 5)
+	public void CheckTheHotelNotSelected() {
+		
+	}
+	
+	@Test(priority = 6)
+	public void CheckDepatureDate() {
+		
+	}
+	
+	@Test(priority = 7)
+	public void CheckReturnDate() {
+		
+	}
+	
+	
+	
 }
