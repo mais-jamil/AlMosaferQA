@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="MyTestCases">
+        <methods>
+          <include name="MySetUp"/>
+          <include name="CheckContactNumber"/>
+          <include name="CheckDepatureDate"/>
+          <include name="CheckTheDefultCurrencyIsSAR"/>
+          <include name="CheckEnglishLangIsDefult"/>
+          <include name="CheckReturnDate"/>
+          <include name="RandomlyChangeTheLanguage"/>
+          <include name="CheckTheHotelNotSelected"/>
+          <include name="ChickQitafLogo"/>
+        </methods>
+      </class> <!-- MyTestCases -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
