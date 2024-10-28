@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.util.Random;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -81,12 +82,26 @@ public class MyTestCases {
 		
 	}
 	
-	@Test(priority = 8, invocationCount = 5)
+	@Test(priority = 8)
 	public void RandomlyChangeTheLanguage() {
 		String [] MyWebsites = {"https://www.almosafer.com/en", "https://www.almosafer.com/ar"};
 		int randomIndex = rand.nextInt(MyWebsites.length);
 		driver.get(MyWebsites[randomIndex]);
-		
+		if(driver.getCurrentUrl().equals("https://www.almosafer.com/ar")) {
+			String ActualLanguage = driver.findElement(By.tagName("html")).getAttribute("lang");
+			String ExpectedLanguage = "ar";
+			org.testng.Assert.assertEquals(ActualLanguage, ExpectedLanguage);
+		}
+		else {
+			String ActualLanguage = driver.findElement(By.tagName("html")).getAttribute("lang");
+			String ExpectedLanguage = "en";
+			org.testng.Assert.assertEquals(ActualLanguage, ExpectedLanguage);
+			
+		}
 	}
 	
 }
+
+
+
+

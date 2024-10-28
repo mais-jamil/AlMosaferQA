@@ -6,14 +6,7 @@
       <class name="MyTestCases">
         <methods>
           <include name="MySetUp"/>
-          <include name="CheckContactNumber"/>
-          <include name="CheckDepatureDate"/>
-          <include name="CheckTheDefultCurrencyIsSAR"/>
-          <include name="CheckEnglishLangIsDefult"/>
-          <include name="CheckReturnDate"/>
-          <include name="RandomlyChangeTheLanguage"/>
-          <include name="CheckTheHotelNotSelected"/>
-          <include name="ChickQitafLogo"/>
+          <include name="HotelSearch"/>
         </methods>
       </class> <!-- MyTestCases -->
     </classes>
