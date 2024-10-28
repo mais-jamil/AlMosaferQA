@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -83,7 +84,7 @@ public class MyTestCases {
 	}
 	
 	@Test(priority = 8)
-	public void RandomlyChangeTheLanguage() {
+	public void RandomlyChangeTheLanguage() throws InterruptedException {
 		String [] MyWebsites = {"https://www.almosafer.com/en", "https://www.almosafer.com/ar"};
 		String [] ArabicCitiesNames = {"جدة","دبي"};
 		String [] EnglishCitiesName = {"Dubai", "Riyadh", "Jeddah"};
@@ -111,15 +112,34 @@ public class MyTestCases {
 			HotelInput.sendKeys(EnglishCitiesName[randomEnglishCity]);
 		}
 		
-		/* WebElement CityList = driver.findElement(By.cssSelector(".sc-phbroq-4.gGwzVo.AutoComplete__List"));
-		CityList.findElement(By.tagName("li")).get(1).click(); */
+		Thread.sleep(2000);
+		WebElement CityList = driver.findElement(By.cssSelector(".sc-phbroq-4.gGwzVo.AutoComplete__List"));
+		WebElement SelectNumberofVisitor = driver.findElement(By.cssSelector(".sc-tln3e3-1.gvrkTi"));
+		CityList.findElements(By.tagName("li")).get(1).click(); 
+		Select select = new Select(SelectNumberofVisitor);
+		int RandomVisitor = rand.nextInt(2);
+		select.selectByIndex(randomIndex);
 		
+		WebElement SearchClick = driver.findElement(By.cssSelector(".sc-1vkdpp9-5.btwWVk"));
+		SearchClick.click();
 		
+		Thread.sleep(25000);
 		
+
 	}
 	
 	@Test(priority = 9)
-	public void test() {
+	public void checkPageIsFullyLoading() {
+		
+		WebElement SearchResult = driver.findElement(By.xpath("//span[@data-testid='srp_properties_found']"));
+		boolean ActualResult = SearchResult.getText().contains("found") || SearchResult.getText().contains("مكان");
+		boolean ExpectedResult = true;
+		
+		org.testng.Assert.assertEquals(ActualResult, ExpectedResult);
+	}
+	
+	@Test(priority = 10)
+	public void CheackTheSortOption() {
 		
 	}
 }
