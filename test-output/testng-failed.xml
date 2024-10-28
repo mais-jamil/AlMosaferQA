@@ -6,7 +6,7 @@
       <class name="MyTestCases">
         <methods>
           <include name="MySetUp"/>
-          <include name="HotelSearch"/>
+          <include name="RandomlyChangeTheLanguage"/>
         </methods>
       </class> <!-- MyTestCases -->
     </classes>

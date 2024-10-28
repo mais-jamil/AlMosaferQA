@@ -85,21 +85,43 @@ public class MyTestCases {
 	@Test(priority = 8)
 	public void RandomlyChangeTheLanguage() {
 		String [] MyWebsites = {"https://www.almosafer.com/en", "https://www.almosafer.com/ar"};
+		String [] ArabicCitiesNames = {"جدة","دبي"};
+		String [] EnglishCitiesName = {"Dubai", "Riyadh", "Jeddah"};
+		
+		int randomArabicCity = rand.nextInt(ArabicCitiesNames.length);
+		int randomEnglishCity = rand.nextInt(EnglishCitiesName.length);
 		int randomIndex = rand.nextInt(MyWebsites.length);
+		
 		driver.get(MyWebsites[randomIndex]);
+		
+		WebElement SelectHotel = driver.findElement(By.id("uncontrolled-tab-example-tab-hotels"));
+		SelectHotel.click();
+		WebElement HotelInput = driver.findElement(By.cssSelector(".sc-phbroq-2.uQFRS.AutoComplete__Input"));
+		
 		if(driver.getCurrentUrl().equals("https://www.almosafer.com/ar")) {
 			String ActualLanguage = driver.findElement(By.tagName("html")).getAttribute("lang");
 			String ExpectedLanguage = "ar";
 			org.testng.Assert.assertEquals(ActualLanguage, ExpectedLanguage);
+			HotelInput.sendKeys(ArabicCitiesNames[randomArabicCity]);
 		}
 		else {
 			String ActualLanguage = driver.findElement(By.tagName("html")).getAttribute("lang");
 			String ExpectedLanguage = "en";
 			org.testng.Assert.assertEquals(ActualLanguage, ExpectedLanguage);
-			
+			HotelInput.sendKeys(EnglishCitiesName[randomEnglishCity]);
 		}
+		
+		/* WebElement CityList = driver.findElement(By.cssSelector(".sc-phbroq-4.gGwzVo.AutoComplete__List"));
+		CityList.findElement(By.tagName("li")).get(1).click(); */
+		
+		
+		
 	}
 	
+	@Test(priority = 9)
+	public void test() {
+		
+	}
 }
 
 
