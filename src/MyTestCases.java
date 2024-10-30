@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Random;
 
 import org.openqa.selenium.By;
@@ -139,7 +140,16 @@ public class MyTestCases {
 	}
 	
 	@Test(priority = 10)
-	public void CheackTheSortOption() {
+	public void CheackTheSortOption() throws InterruptedException {
+		Thread.sleep(25000);
+		
+		driver.get("https://www.almosafer.com/ar/hotels/Dubai/10-11-2024/11-11-2024/2_adult?placeId=ChIJRcbZaklDXz4RYlEphFBu5r0&city=%D8%AF%D8%A8%D9%8A");
+
+		WebElement LowestPriceButton = driver.findElement(By.xpath("//div[@data-testid='srp_sort_LOWEST_PRICE']"));
+
+		LowestPriceButton.click();
+		
+		List<WebElement> allPrices = driver.findElements(By.cssSelector(".__ds__comp.undefined.MuiBox-root.muiltr-1nylpq2"));
 		
 	}
 }
