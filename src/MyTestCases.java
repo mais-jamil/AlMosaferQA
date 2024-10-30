@@ -78,9 +78,18 @@ public class MyTestCases {
 	@Test(priority = 7)
 	public void CheckReturnDate() {
 		int AfterTommorw = LocalDate.now().plusDays(2).getDayOfMonth();
+		if(AfterTommorw < 10) {
+			String ActualReturn = driver.findElement(By.cssSelector("div[class='sc-OxbzP sc-bYnzgO bojUIa'] span[class='sc-fvLVrH hNjEjT']")).getText();
+			String ExpextedReturn = "0" + Integer.toString(AfterTommorw);
+			org.testng.Assert.assertEquals(ActualReturn, ExpextedReturn);
+
+		}
+		else {
 		String ActualReturn = driver.findElement(By.cssSelector("div[class='sc-OxbzP sc-bYnzgO bojUIa'] span[class='sc-fvLVrH hNjEjT']")).getText();
 		String ExpextedReturn = Integer.toString(AfterTommorw);
 		org.testng.Assert.assertEquals(ActualReturn, ExpextedReturn);
+
+		}
 		
 	}
 	
