@@ -70,7 +70,7 @@ public class MyTestCases {
 	public void CheckDepatureDate() {
 		int Tommorw = LocalDate.now().plusDays(1).getDayOfMonth();
 		String ActualDepature = driver.findElement(By.cssSelector("div[class='sc-OxbzP sc-lnrBVv gKbptE'] span[class='sc-fvLVrH hNjEjT']")).getText();
-		String ExpextedDepature = Integer.toString(Tommorw);
+		String ExpextedDepature = String.format("%02d", Tommorw);
 		org.testng.Assert.assertEquals(ActualDepature, ExpextedDepature);
 					
 	}
@@ -78,20 +78,12 @@ public class MyTestCases {
 	@Test(priority = 7)
 	public void CheckReturnDate() {
 		int AfterTommorw = LocalDate.now().plusDays(2).getDayOfMonth();
-		if(AfterTommorw < 10) {
-			String ActualReturn = driver.findElement(By.cssSelector("div[class='sc-OxbzP sc-bYnzgO bojUIa'] span[class='sc-fvLVrH hNjEjT']")).getText();
-			String ExpextedReturn = "0" + Integer.toString(AfterTommorw);
-			org.testng.Assert.assertEquals(ActualReturn, ExpextedReturn);
-
-		}
-		else {
 		String ActualReturn = driver.findElement(By.cssSelector("div[class='sc-OxbzP sc-bYnzgO bojUIa'] span[class='sc-fvLVrH hNjEjT']")).getText();
-		String ExpextedReturn = Integer.toString(AfterTommorw);
+		String ExpextedReturn = String.format("%02d", AfterTommorw);
 		org.testng.Assert.assertEquals(ActualReturn, ExpextedReturn);
 
 		}
 		
-	}
 	
 	@Test(priority = 8)
 	public void RandomlyChangeTheLanguage() throws InterruptedException {
