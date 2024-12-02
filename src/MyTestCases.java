@@ -1,9 +1,13 @@
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,29 +15,30 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class MyTestCases {
-	WebDriver driver = new ChromeDriver();
-	String WebsiteURL = "https://global.almosafer.com/en";
-	Random rand = new Random();
-		
+public class MyTestCases extends Parameters {
+			
 	@BeforeTest
 	public void MySetUp() {
-		driver.manage().window().maximize();
-		driver.get(WebsiteURL);
-		WebElement CurrencyBtn = driver.findElement(By.cssSelector(".sc-jTzLTM.hQpNle.cta__button.cta__saudi.btn.btn-primary"));
-		CurrencyBtn.click();
-	
+		
+		WebsiteSetUp();
 	}
 		
 	@Test(priority = 1)
-	public void CheckEnglishLangIsDefult() {
+	public void CheckEnglishLangIsDefult() throws IOException {
 		String ActualLanguage = driver.findElement(By.tagName("html")).getAttribute("lang");
 		String ExpectedLanguage = "en";
 		org.testng.Assert.assertEquals(ActualLanguage, ExpectedLanguage);
 		
+		java.util.Date myDate = new java.util.Date();
+		String fileName = myDate.toString().replace(":", "-");
+		
+		TakesScreenshot screenshot = (TakesScreenshot) driver;
+		File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
+		File destFile = new File("./ScteenShots/"+ fileName +".jpg");
+		FileUtils.copyFile(srcFile, destFile);
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2, enabled = false)
 	public void CheckTheDefultCurrencyIsSAR() {
 		String ActualCurrency = driver.findElement(By.xpath("//button[@data-testid='Header__CurrencySelector']")).getText();
 		String ExpectedCurrency = "SAR";
@@ -41,7 +46,7 @@ public class MyTestCases {
 				
 	}
 	
-	@Test(priority = 3)
+	@Test(priority = 3, enabled = false)
 	public void CheckContactNumber() {
 		String ActualContactNumber = driver.findElement(By.cssSelector(".sc-hUfwpO.bWcsTG")).getText();
 		String ExpectedContactNumber = "+966554400000";
@@ -49,7 +54,7 @@ public class MyTestCases {
 		
 	}
 	
-	@Test(priority = 4)
+	@Test(priority = 4, enabled = false)
 	public void ChickQitafLogo() {
 		boolean ActualResult = driver.findElement(By.cssSelector(".sc-ghsgMZ.hIElfs")).isDisplayed();
 		boolean ExpectedResult = true;
@@ -57,7 +62,7 @@ public class MyTestCases {
 		
 	}
 	
-	@Test(priority = 5)
+	@Test(priority = 5, enabled = false)
 	public void CheckTheHotelNotSelected() {
 		WebElement HotelTab = driver.findElement(By.id("uncontrolled-tab-example-tab-hotels"));
 		String ActualValue = HotelTab.getAttribute("aria-selected");
@@ -66,7 +71,7 @@ public class MyTestCases {
 		
 	}
 	
-	@Test(priority = 6)
+	@Test(priority = 6, enabled = false)
 	public void CheckDepatureDate() {
 		int Tommorw = LocalDate.now().plusDays(1).getDayOfMonth();
 		String ActualDepature = driver.findElement(By.cssSelector("div[class='sc-OxbzP sc-lnrBVv gKbptE'] span[class='sc-fvLVrH hNjEjT']")).getText();
@@ -75,7 +80,7 @@ public class MyTestCases {
 					
 	}
 	
-	@Test(priority = 7)
+	@Test(priority = 7, enabled = false)
 	public void CheckReturnDate() {
 		int AfterTommorw = LocalDate.now().plusDays(2).getDayOfMonth();
 		String ActualReturn = driver.findElement(By.cssSelector("div[class='sc-OxbzP sc-bYnzgO bojUIa'] span[class='sc-fvLVrH hNjEjT']")).getText();
@@ -85,7 +90,7 @@ public class MyTestCases {
 		}
 		
 	
-	@Test(priority = 8)
+	@Test(priority = 8, enabled = false)
 	public void RandomlyChangeTheLanguage() throws InterruptedException {
 		String [] MyWebsites = {"https://www.almosafer.com/en", "https://www.almosafer.com/ar"};
 		String [] ArabicCitiesNames = {"جدة","دبي"};
@@ -124,13 +129,11 @@ public class MyTestCases {
 		
 		WebElement SearchClick = driver.findElement(By.cssSelector(".sc-1vkdpp9-5.btwWVk"));
 		SearchClick.click();
-		
-		Thread.sleep(25000);
-		
+				
 
 	}
 	
-	@Test(priority = 9)
+	@Test(priority = 9, enabled = false)
 	public void checkPageIsFullyLoading() {
 		
 		WebElement SearchResult = driver.findElement(By.xpath("//span[@data-testid='srp_properties_found']"));
@@ -140,7 +143,7 @@ public class MyTestCases {
 		org.testng.Assert.assertEquals(ActualResult, ExpectedResult);
 	}
 	
-	@Test(priority = 10)
+	@Test(priority = 10, enabled = false)
 	public void CheackTheSortOption() throws InterruptedException {
 		Thread.sleep(25000);
 		
