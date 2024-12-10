@@ -26,32 +26,25 @@ public class MyTestCases extends Parameters {
 	@Test(priority = 1)
 	public void CheckEnglishLangIsDefult() throws IOException {
 		String ActualLanguage = driver.findElement(By.tagName("html")).getAttribute("lang");
-		String ExpectedLanguage = "en";
 		org.testng.Assert.assertEquals(ActualLanguage, ExpectedLanguage);
 		
-		java.util.Date myDate = new java.util.Date();
-		String fileName = myDate.toString().replace(":", "-");
-		
-		TakesScreenshot screenshot = (TakesScreenshot) driver;
-		File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
-		File destFile = new File("./ScteenShots/"+ fileName +".jpg");
-		FileUtils.copyFile(srcFile, destFile);
+		ScreenShot();
 	}
 	
 	@Test(priority = 2, enabled = false)
-	public void CheckTheDefultCurrencyIsSAR() {
+	public void CheckTheDefultCurrencyIsSAR() throws IOException {
 		String ActualCurrency = driver.findElement(By.xpath("//button[@data-testid='Header__CurrencySelector']")).getText();
-		String ExpectedCurrency = "SAR";
 		org.testng.Assert.assertEquals(ActualCurrency, ExpectedCurrency);
-				
+		
+		ScreenShot();
 	}
 	
 	@Test(priority = 3, enabled = false)
-	public void CheckContactNumber() {
+	public void CheckContactNumber() throws IOException {
 		String ActualContactNumber = driver.findElement(By.cssSelector(".sc-hUfwpO.bWcsTG")).getText();
-		String ExpectedContactNumber = "+966554400000";
 		org.testng.Assert.assertEquals(ActualContactNumber, ExpectedContactNumber);
 		
+		ScreenShot();
 	}
 	
 	@Test(priority = 4, enabled = false)

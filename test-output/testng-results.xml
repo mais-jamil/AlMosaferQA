@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="10" total="10" passed="0" failed="0" skipped="0">
+<testng-results ignored="9" total="10" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-12-02T22:38:05 EET" name="Default suite" finished-at="2024-12-02T22:38:16 EET" duration-ms="11549">
+  <suite started-at="2024-12-11T00:20:30 EET" name="Default suite" finished-at="2024-12-11T00:20:36 EET" duration-ms="6582">
     <groups>
     </groups>
-    <test started-at="2024-12-02T22:38:05 EET" name="Default test" finished-at="2024-12-02T22:38:16 EET" duration-ms="11549">
+    <test started-at="2024-12-11T00:20:30 EET" name="Default test" finished-at="2024-12-11T00:20:36 EET" duration-ms="6582">
       <class name="MyTestCases">
-        <test-method is-config="true" signature="MySetUp()[pri:0, instance:MyTestCases@5f6722d3]" started-at="2024-12-02T22:38:05 EET" name="MySetUp" finished-at="2024-12-02T22:38:16 EET" duration-ms="11523" status="PASS">
+        <test-method is-config="true" signature="MySetUp()[pri:0, instance:MyTestCases@2c532cd8]" started-at="2024-12-11T00:20:30 EET" name="MySetUp" finished-at="2024-12-11T00:20:36 EET" duration-ms="5852" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- MySetUp -->
+        <test-method signature="CheckEnglishLangIsDefult()[pri:1, instance:MyTestCases@2c532cd8]" started-at="2024-12-11T00:20:36 EET" name="CheckEnglishLangIsDefult" finished-at="2024-12-11T00:20:36 EET" duration-ms="646" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CheckEnglishLangIsDefult -->
       </class> <!-- MyTestCases -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
